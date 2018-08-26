@@ -39,6 +39,7 @@ x = Dropout(0.4)(x)
 x = Dense(512, activation='relu')(x)
 x = Dropout(0.4)(x)
 outputs = Dense(7, activation='softmax')(x)
+
 model = Model(inputs, outputs)
 model.summary()
 model.compile(loss='categorical_crossentropy', optimizer= Adam(),metrics=['categorical_accuracy'])

@@ -20,8 +20,6 @@ while ret:
     ret, frame = cap.read()
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
     face_cascade = cv2.CascadeClassifier('/usr/local/share/OpenCV/haarcascades/haarcascade_frontalface_default.xml')
-    # print (type(gray))
-    # print (type(ret))
     faces = face_cascade.detectMultiScale(gray, 1.3, 5)
     for (x,y,w,h) in faces:
         cv2.rectangle(frame,(x,y),(x+w,y+h),(255,0,0),2)
@@ -31,8 +29,6 @@ while ret:
         prediction = model.predict(std_face)[0]
         cv2.imshow('emoji',expr_dict[np.argmax(prediction)])
 
-        # cv2.imshow('face',std_face)
-    # edges = cv2.Canny(gray,70,80)
     # Display the resulting frame
     cv2.imshow('frame',frame)
     if cv2.waitKey(1) & 0xFF == ord('q'):
@@ -40,5 +36,3 @@ while ret:
 
 cap.release()
 cv2.destroyAllWindows()
-    # cap.open()
-    # cap.read()
